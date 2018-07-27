@@ -9,9 +9,8 @@
 <p>- 다양한 브라우저의 웹 드라이버 컨트롤 가능</p>
 <br>
 <h2>2. 웹 자동화</h2>
-<p>(1) sulenium 설치
-- pip isntall sulenium</p>
-<p></p>
+<p>(1) sulenium 설치</p>
+<p>- pip isntall sulenium</p>
 <br>
 <h2>3. 코딩</h2>
 <p>(1) try ~ except ~ finally
