@@ -35,6 +35,7 @@ try:
 	fine_dust = driver.find_element_by_id('airPollutionNColl')
 	find_dust_concentration = fine_dust.find_element_by_class_name('info_air')
 	
+	# 미세먼지 정보를 텍스트파일로 저장
 	f = open("미세먼지 정보.txt", "w")
 	f.write(find_dust_concentration.text)
 	f.close()

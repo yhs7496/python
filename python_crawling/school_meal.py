@@ -5,22 +5,19 @@ from selenium import webdriver
 driver = webdriver.Chrome('Chromedriver')
 
 try:
+	# http://dsm2015.cafe24.com/#/로 접속 
 	driver.get('http://dsm2015.cafe24.com/#/')
-	# 네이버 뉴스임을 알 수 있도록 현재 타이틀 출력
-	print(driver.title)
-
-	# 최근 뉴스 목록을 가진 div id 태그를 가져옴 
+	
+	# id로 접근
 	title_id = driver.find_element_by_id('meal-content-wrapper')
-
-	# 위 div_id안에 li태그로 구분 되어 있는 정보를 가져와 리스트로 저장
+	
+	# class로 접근
 	meal_list = title_id.find_elements_by_class_name('food')
 
-	# 가져온 태그들에 대해 반복문을 수행하면서 각각의 문자열을 출력
+	# 가져온 태그들에 대해 반복문을 수행하면서 각각의 태그 안에 있는 요소들을 텍스트파일로 저장
 	for meal in meal_list:
 		print(meal.text)
 		
-	
-
 except Exception as e:
 	print(e)
 

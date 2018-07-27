@@ -19,7 +19,8 @@ try:
 
 	hot_click = driver.find_element_by_class_name('total_listing_wrap')
 	hot_click_list = hot_click.find_elements_by_tag_name('li')
-
+	
+	# 엑셀로 저장
 	for title in hot_click_list:
 		title = title.find_element_by_class_name('info_tit')
 		print(title.text)
