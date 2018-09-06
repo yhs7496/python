@@ -4,6 +4,7 @@ count = 0
 protocols = {1:'ICMP', 6:'TCP', 17:'UDP'}
 
 def sniffing():
+    print("Sniffing Start")
     sniff(prn=showPacket, timeout=int(time))
 
 def showPacket(packet):
@@ -16,6 +17,6 @@ def showPacket(packet):
         print("protocol: %s: src: %s -> dst: %s" %(protocols[proto], src_ip, dst_ip))
         count += 1
         print(count)
-  
-time = input()
+     
+time = input("time : ")
 sniffing()
