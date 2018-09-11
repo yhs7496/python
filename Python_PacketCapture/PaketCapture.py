@@ -2,6 +2,8 @@ from scapy.all import*
 
 count = 1
 protocols = {1:'ICMP', 6:'TCP', 17:'UDP'}
+protocol_type = input("Protocol Type: ")
+sniffing_time = input("Sniffing Time: ")
 
 def sniffing():
     print("Sniffing Start")
@@ -47,11 +49,11 @@ def showPacket(packet):
             print("src: %s -> dst: %s TTL: %s" %(src_ip, dst_ip, ttl))
             print("\n")
         count += 1
-    else:
-        print("지원하지 않는 프로토콜입니다.")
-         
-protocol_type = input("Protocol Type: ")         
-sniffing_time = input("Sniffing Time: ")
-sniffing()
-print("Finish Capture Packet")
-print("Total Packet: %s" %(count-1))    
+
+if protocol_type in protocols.values():
+    sniffing()
+    print("Finish Capture Packet")
+    print("Total Packet: %s" %(count-1))    
+else: 
+    print("지원하지 않는 프로토콜 입니다.")
+
