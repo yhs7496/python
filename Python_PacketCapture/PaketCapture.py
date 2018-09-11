@@ -15,23 +15,37 @@ def showPacket(packet):
     dst_ip = packet[IP].dst  
     proto = packet[IP].proto
     ttl = packet[IP].ttl
-    
-    # TCP
-    sport = packet[TCP].sport
-    dport = packet[TCP].dport
-    seq = packet[TCP].dport
-    ack = packet[TCP].ack
-
+    length = packet[IP].len
+        
     if proto in protocols:  
+         # TCP
         if proto == 6:
+            sport = packet[TCP].sport
+            dport = packet[TCP].dport
+            seq = packet[TCP].dport
+            ack = packet[TCP].ack
+            flag = packet[TCP].flags
+            
             print("packet number: %s protocol: %s" %(count, protocols[proto]))
-            print("src: %s -> dst: %s TTL: %s" %(src_ip, dst_ip, ttl))
+            print("src: %s -> dst: %s" %(src_ip, dst_ip))
+            print("TTL: %s Length: %s" %(ttl, length))
             print("sport: %s dport: %s" %(sport, dport))
-            print("seq: %s ack: %s" %(seq, ack))
-
-        else:
+            print("seq: %s ack: %s flag: %s" %(seq, ack, flag))
+            print("\n")
+        
+        if proto == 1:
+            message_type = packet[ICMP].type
+            code = packet[ICMP].code
+            
             print("packet number: %s protocol: %s" %(count, protocols[proto]))
             print("src: %s -> dst: %s TTL: %s" %(src_ip, dst_ip, ttl))
+            print("type: %s code: %s" %(message_type, code))
+            print("\n")
+        
+        if proto == 17:
+            print("packet number: %s protocol: %s" %(count, protocols[proto]))
+            print("src: %s -> dst: %s TTL: %s" %(src_ip, dst_ip, ttl))
+            print("\n")
         count += 1
     else:
         print("지원하지 않는 프로토콜입니다.")
@@ -39,4 +53,5 @@ def showPacket(packet):
 protocol_type = input("Protocol Type: ")         
 sniffing_time = input("Sniffing Time: ")
 sniffing()
-
+print("Finish Capture Packet")
+print("Total Packet: %s" %(count-1))    
