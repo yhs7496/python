@@ -1,6 +1,4 @@
 import random
-import socket
-import struct
 from scapy.all import *
 
 target = input("target ip: ")
