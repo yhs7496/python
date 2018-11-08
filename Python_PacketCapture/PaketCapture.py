@@ -47,8 +47,12 @@ def showPacket(packet):
         
         # UDP
         if proto == 17:
+            sport = packet[UDP].sport
+            dport = packet[UDP].dport
+            udp_length = packet[UDP].len
             print("packet number: %s protocol: %s" %(count, protocols[proto].upper()))
             print("src: %s -> dst: %s TTL: %s" %(src_ip, dst_ip, ttl))
+            print("sport: %s dport: %s Packet Length: %s" %(sport, dport, udp_length))
             print("\n")
         count += 1
 
