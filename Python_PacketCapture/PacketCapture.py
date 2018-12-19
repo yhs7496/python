@@ -64,9 +64,11 @@ if protocol_type in protocols.values():
             print("No Packet")
             sys.exit()
     else:
-        print("Total Packet: %s" %(count-1))
-        file_name = input("Enter File Name: ")
-        wrpcap(str(file_name), pcap_file)
-        print("File Save")
+        try:
+            print("Total Packet: %s" %(count-1))
+            file_name = input("Enter File Name: ")
+            wrpcap(str(file_name), pcap_file)
+        except:
+            sys.exit()   
 else: 
     print("Unsupported Format")
