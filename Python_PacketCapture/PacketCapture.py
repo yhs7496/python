@@ -9,7 +9,15 @@ sniffing_time = input("Sniffing Time: ")
 def sniffing():
     print("Sniffing Start")
     pcap_file = sniff(prn=showPacket, timeout=int(sniffing_time), filter=str(protocol_type))
-   
+    print("Finish Capture Packet")
+    if count == 1:
+            print("No Packet")
+            sys.exit()
+    else:
+        print("Total Packet: %s" %(count-1))
+        file_name = input("Enter File Name: ")
+        wrpcap(str(file_name), pcap_file)
+  
 
 def showPacket(packet):
     global count
@@ -58,17 +66,6 @@ def showPacket(packet):
         count += 1
 
 if protocol_type in protocols.values():
-    sniffing()
-    print("Finish Capture Packet")
-    if count == 1:
-            print("No Packet")
-            sys.exit()
-    else:
-        try:
-            print("Total Packet: %s" %(count-1))
-            file_name = input("Enter File Name: ")
-            wrpcap(str(file_name), pcap_file)
-        except:
-            sys.exit()   
+    sniffing() 
 else: 
     print("Unsupported Format")
